@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "MySATPrep LocalStorage Backup",
+  "version": "1.0",
+  "description": "Export/import localStorage with backups",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://www.mysatprep.fun/*",
+    "https://practicesat.vercel.app/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SAT Backup"
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
