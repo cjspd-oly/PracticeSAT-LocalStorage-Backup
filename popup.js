@@ -5,6 +5,33 @@ const backupList = document.getElementById("backupList");
 
 const MAX_BACKUPS = 5;
 
+// ---------- TOAST ----------
+
+let toastTimer = null;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+
+  // reset state
+  toast.classList.remove("hide", "show");
+  void toast.offsetWidth;
+
+  // enter animation
+  toast.classList.add("show");
+
+  // clear previous timer
+  if (toastTimer) clearTimeout(toastTimer);
+
+  // HOLD for 2 seconds AFTER animation
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+    toast.classList.add("hide");
+  }, 2000); // ← THIS is your hold time
+}
+
 // ---------- HELPERS ----------
 
 async function getTab() {
@@ -53,7 +80,8 @@ exportBtn.onclick = async () => {
     ];
 
     if (!allowed.some(domain => tab.url.includes(domain))) {
-      alert("Open mysatprep / practicesat.vercel.app site first");
+      showToast("Open mysatprep / practicesat.vercel.app site first");
+      // alert("Open mysatprep / practicesat.vercel.app site first");
       return;
     }
 
@@ -92,7 +120,8 @@ exportBtn.onclick = async () => {
 
   } catch (err) {
     console.error(err);
-    alert("Export failed: " + err.message);
+    showToast("Export failed: " + err.message);
+    // alert("Export failed: " + err.message);
   }
 };
 
@@ -126,7 +155,8 @@ importBtn.onclick = () => {
 
     } catch (err) {
       console.error(err);
-      alert("Import failed: " + err.message);
+      showToast("Import failed: " + err.message);
+      // alert("Import failed: " + err.message);
     }
   };
 
@@ -141,7 +171,8 @@ restoreBtn.onclick = async () => {
     const index = backupList.value;
 
     if (!backups[index]) {
-      alert("No backup selected");
+      showToast("No backup selected");
+      // alert("No backup selected");
       return;
     }
 
@@ -160,7 +191,8 @@ restoreBtn.onclick = async () => {
 
   } catch (err) {
     console.error(err);
-    alert("Restore failed: " + err.message);
+    showToast("Restore failed: " + err.message);
+    // alert("Restore failed: " + err.message);
   }
 };
 
