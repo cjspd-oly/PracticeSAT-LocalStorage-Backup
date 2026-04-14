@@ -9,4 +9,4 @@ Works for
 # Popup
 - Export Button - exports into a file
 - Import Button - imports from a file
-- Restore Backup - uses extension local storage
+- Restore Backup - uses extension local storage (5 backup copy)
