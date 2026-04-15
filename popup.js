@@ -5,9 +5,9 @@ const backupList = document.getElementById("backupList");
 
 const MAX_BACKUPS = 5;
 
-// ---------- OPEN WEBSITE ----------
+// ---------- OPEN WEBSITE/REPO ----------
 
-// redirect buttons
+// Add links to popup.html
 document.querySelectorAll("[data-url]").forEach(el => {
   el.addEventListener("click", () => {
     chrome.tabs.create({
